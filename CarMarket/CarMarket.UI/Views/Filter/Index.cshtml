@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CarMarket.Core.Car>
+@{
+    ViewData["Title"] = "Результати фільтру:";
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+}
+
+<div class="content-wrapper pb-0 text-center">
+    <h1>@ViewData["Title"]</h1>
+
+    <br />
+ 
+    <tbody>
+        <div class="container row">
+            @foreach (var car in Model)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@car.Color</h5>
+                        <p class="card-text">Engine: @car.Engine</p>
+                        <p class="card-text">Price: @car.Price</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </tbody>
+
+</div>

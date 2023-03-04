@@ -1,0 +1,42 @@
+﻿@using CarMarket.Core
+@model CarMarket.Repos.Dto.CarCreateDto
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+    var brands = ViewBag.Brands as IEnumerable<SelectListItem>;
+    var models = ViewBag.Models as IEnumerable<SelectListItem>;
+}
+
+<div class="content-wrapper pb-0 text-center">
+    <h1 class="display-4">Пошук Авто</h1>
+<div class="text-center">
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@      
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.Label("Brands")
+            @Html.DropDownList("Brands", brands)
+            </div>
+            <div class="form-group">
+                @Html.Label("Models")
+                @Html.DropDownList("Models", models)
+            </div>
+           
+            <div class="form-group">
+                @Html.Label("Color")
+                @Html.TextBox("Color", null, new { @class = "form-control narrow", @autocomplete = "on" })               
+            </div>
+            <div class="form-group">
+                @Html.Label("Engine")
+                @Html.TextBox("Engine", null, new { @class = "form-control narrow", @autocomplete = "on" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Price Range")
+                @Html.TextBox("MinPrice", null, new { @class = "form-control narrow", placeholder="MIN Price", style= "margin-bottom: 20px;" })
+                @Html.TextBox("MaxPrice", null, new { @class = "form-control narrow", placeholder="MAX Price" })
+            </div>
+            
+            <button asp-action="Filter" asp-controller="Filter" type="submit" class="btn btn-primary">Filter</button>
+        }
+    </div>
+</div>

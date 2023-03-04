@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CarMarket.Core.Car>
+@{
+    ViewData["Title"] = "Результати фільтру:";
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+}
+
+<div class="content-wrapper pb-0 text-center">
+    <h1>@ViewData["Title"]</h1>
+
+    <br />
+
+    <tbody>
+        <div class="container row">
+            @foreach (var car in Model)
+            {
+                <div class="col-sm-3">
+                    <div class="card card-block">
+                        <img class="card-img-top img-thumbnail" style="height: 180px; width: 100%; display: block;" src="~/@car.ImgPath" alt="@car.Name">
+                        <div class="card-block">
+                            <h5 class="card-title">@car.Name</h5>
+                            <p class="card-text">Бренд: @car.Brand.Name</p>
+                            <input type="hidden" value="@car.Id" />
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </tbody>
+
+</div>
